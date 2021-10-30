@@ -1,48 +1,48 @@
-import React from 'react';
-import './CheckoutProduct.css';
-import {useStateValue} from "./StateProvider";
-
-
-function CheckoutProduct({id,image,title,price,rating}) {
-
-    const [{basket} , dispatch] = useStateValue();
-
-    const removeFromBasket = () => {
-            //remove the item from the basket
-            dispatch({
-                type: 'REMOVE_FROM_BASKET',
-                id: id,
-            })
-    }
-
-    return(
-        <div className = 'checkout'>
-            <img className='checkoutProduct__image' src = {image} alt=''/>
-            <div className = 'checkoutProduct__info'>
-                <p className = 'checkoutProduct__title'>
-                    {title}
-                </p>
-                <p className = 'checkoutProduct__price'>
-                    <p><small>Rs</small></p>
-                    <strong>{price}</strong>
-                </p>
-
-                    <div className = 'checkoutProduct__rating'>
-                    {Array({rating}).fill().map((_,i) =>
-                       ( <p>⭐</p> )
-                    )}
+import React from 'react'
+import { useStateValue } from "./StateProvider"
+import "./Checkout.css"
+import CheckoutProduct from "./CheckoutProduct"
+import Subtotal from "./Subtotal"
+function Checkout() {
+    const [{ basket }] = useStateValue()
+    return (
+        <div className="checkout">
+            <div className="checkout__left">
+                <img className="checkout__ad" src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg" alt="ad"
+                />
+                {basket.length === 0 ? (
+                    <div>
+                        <h2>Your shopping basket is empty</h2>
+                        <p>
+                            You have no items in your basket. To buy one or add item to basket click the add to basket button
+                        </p>
                     </div>
-
-
-                <button onClick={removeFromBasket}>Remove from Basket</button>
-                
+                ) : (
+                    <div>
+                        <h2 className="checkout__title">Your shopping basket</h2>
+                        {basket.map(item => {
+                            console.log(item)
+                        return (
+                            <CheckoutProduct
+                                id={item.id}
+                                title={item.title}
+                                image={item.image}
+                                price={item.price}
+                                rating={item.rating}
+                            />
+                        )
+                        })}
+                    </div>
+                )}
             </div>
-         
-                
-                
+            {basket.length > 0 && 
+                <div className="checkout__right">
+                    <Subtotal/>
+                </div>
+            }
+
+
         </div>
-      
     )
 }
-
-export default CheckoutProduct;
+export default Checkout;

@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import React from 'react';
 import './Checkout.css';
 import Subtotal from './Subtotal';
@@ -7,7 +7,7 @@ import {useStateValue} from "./StateProvider"
 
 function Checkout(){
 
-    const [{basket},dispatch] =  useStateValue();
+    const [{basket},dispatch]=useStateValue();
 
     return(
         <div className="checkout">
@@ -26,17 +26,17 @@ function Checkout(){
                     </h2>
 
                     {basket.map((item) => (
-                        <CheckoutProduct id ={item.id}
-                        image = {item.image}
-                        title = {item.title}
-                        price = {item.price}
+                        <CheckoutProduct id={item.id}
+                        image={item.image}
+                        title={item.title}
+                        price={item.price}
                         />
 
                     ))} 
                 </div>
             </div>
 
-            <div className = 'checkout__right'>
+            <div className='checkout__right'>
                 <Subtotal/>
             </div>
         </div>
