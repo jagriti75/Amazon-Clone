@@ -16,7 +16,7 @@
     -Material-UI - React UI framework
     -Context API- State container for JS
     -React - JS library
-    -Express - Node.js framework
+    -Node.js framework
     -Firebase - Google authentication , Deployment
  
 
