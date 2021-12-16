@@ -1,3 +1,5 @@
+[AMAZON CLONE DEMO](https://ecommerceapp-clone.herokuapp.com/)
+
 ## Introduction 
 > This is the Amazon Clone using React. Used Firebase for Authentication, Database, Functions and Hosting.Also used HTML, CSS and React Context API.
 
